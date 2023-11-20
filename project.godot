@@ -13,3 +13,7 @@ config_version=5
 config/name="Playground"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[rendering]
+
+viewport/hdr_2d=true
