@@ -1,8 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://24uavpykfes0"]
+[gd_scene load_steps=3 format=3 uid="uid://24uavpykfes0"]
 
 [ext_resource type="PackedScene" uid="uid://cu888am6c2jlh" path="res://Scenes/Player.tscn" id="1_ab8ea"]
+[ext_resource type="PackedScene" uid="uid://lc1f2u0dd4dx" path="res://Scenes/LevelTest.tscn" id="2_r1ld6"]
 
 [node name="Root" type="Node2D"]
-position = Vector2(571, 409)
 
 [node name="Player" parent="." instance=ExtResource("1_ab8ea")]
+position = Vector2(162, 452)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+offset = Vector2(360, 0)
+limit_smoothed = true
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_vertical_offset = -0.5
+drag_right_margin = 0.0
+editor_draw_drag_margin = true
+
+[node name="Level" parent="." instance=ExtResource("2_r1ld6")]
