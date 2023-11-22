@@ -1,29 +1,40 @@
-[gd_scene load_steps=4 format=3 uid="uid://cu888am6c2jlh"]
+[gd_scene load_steps=5 format=3 uid="uid://cu888am6c2jlh"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_arn7g"]
-[ext_resource type="SpriteFrames" uid="uid://doh4mjqcebjga" path="res://Textures/player_walk.tres" id="2_8t8dy"]
+[ext_resource type="SpriteFrames" uid="uid://1ri4nugl31v" path="res://Textures/Characters/SpriteFrames/player_walk.tres" id="2_d4uqw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t5kmi"]
 size = Vector2(84, 96)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_khm2h"]
+polygon = PackedVector2Array(21, 50, -21, 50, -25, 46, -29, 30, -21, 17, -21, -17, 21, -17, 21, 17, 29, 29, 25, 46)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_arn7g")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(4.167, 4.167)
-sprite_frames = ExtResource("2_8t8dy")
+sprite_frames = ExtResource("2_d4uqw")
 frame_progress = 0.217294
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_t5kmi")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(360, 0)
+limit_bottom = 0
 limit_smoothed = true
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
+drag_horizontal_offset = 1.0
 drag_vertical_offset = -0.5
-drag_right_margin = 0.0
 editor_draw_drag_margin = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_khm2h")
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
