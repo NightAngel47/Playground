@@ -7,8 +7,8 @@ env:
   
 jobs:
   export-windows:
-    name: Windows Desktop
-    runs-on: ubuntu-20.04
+    name: Windows Export
+    runs-on: ubuntu-latest
     container:
       image: barichello/godot-ci:4.2
     steps:
