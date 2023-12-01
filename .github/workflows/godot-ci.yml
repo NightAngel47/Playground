@@ -4,11 +4,10 @@ on: push
 env:
   GODOT_VERSION: 4.2
   EXPORT_NAME: playground
-  PROJECT_PATH: playground
   
 jobs:
   export-windows:
-    name: Windows Export
+    name: Windows Desktop
     runs-on: ubuntu-20.04
     container:
       image: barichello/godot-ci:4.2
