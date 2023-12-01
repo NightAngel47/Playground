@@ -6,9 +6,14 @@ env:
   EXPORT_NAME: Playground
   
 jobs:
+  import-assets:
+    name: Import Assets
+    stage: import-assets
+    script:
+      - godot -v -e --quit --headless
   export-windows:
     name: Windows Export
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     container:
       image: barichello/godot-ci:4.2
     steps:
@@ -23,9 +28,9 @@ jobs:
       - name: Windows Build
         run: |
           mkdir -v -p build/windows
-          godot -v --export-release --headless "Windows Desktop" ../build/windows/$EXPORT_NAME.exe
+          godot -v --headless --export-release "Windows Desktop" ../build/windows/$EXPORT_NAME.exe
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
         with:
-          name: windows
+          name: $EXPORT_NAME-windows
           path: build/windows
