@@ -40,5 +40,6 @@ jobs:
       id: upload_artifact
       uses: actions/upload-artifact@v3
       with:
+        name: builds 
         path: ${{ steps.export.outputs.archive_directory }}/*
         if-no-files-found: error
