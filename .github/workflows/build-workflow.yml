@@ -1,3 +1,4 @@
+name: "build project"
 # Whenever a push run the job
 on: 
   push:
