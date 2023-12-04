@@ -34,7 +34,6 @@ jobs:
         export_debug: false
         archive_output: true
         cache: true
-        verbose: true
         wine_path: ${{ steps.wine_install.outputs.WINE_PATH }}
     - name: upload artifact
       id: upload_artifact
