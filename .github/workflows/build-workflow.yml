@@ -40,6 +40,5 @@ jobs:
       id: upload_artifact
       uses: actions/upload-artifact@v3
       with:
-        name: windows
-        path: ${{ steps.export.outputs.archive_directory }}/Windows Desktop.zip
+        path: ${{ steps.export.outputs.archive_directory }}/*
         if-no-files-found: error
