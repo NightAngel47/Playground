@@ -31,10 +31,11 @@ jobs:
         verbose: true
 
   upload_artifacts:
+    needs: export_game
     runs-on: ubuntu-latest
     steps:
     - name: download exported files
-      uses: actions/download-artifact@v3.1.3
+      uses: actions/download-artifact@v3
       with:
         name: ${{ steps.export.outputs.archive_directory }}/*
         path: exported_files
