@@ -40,6 +40,6 @@ jobs:
       id: upload_artifact
       uses: actions/upload-artifact@v3
       with:
-        name: ${{ github.ref_name }}
-        path: ${{ steps.export.outputs.archive_directory }}/*
+        name: windows
+        path: ${{ steps.export.outputs.archive_directory }}/Windows Desktop.zip
         if-no-files-found: error
