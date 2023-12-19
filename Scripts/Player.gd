@@ -3,7 +3,8 @@ extends CharacterBody2D
 
 signal player_died()
 
-@export var speed = 150.0
+@export var base_speed = 150.0
+@export var sprint_speed = 300.0
 @export var jump_velocity = -350.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -20,6 +21,10 @@ func _physics_process(delta):
 
 	# Get the input direction and handle the movement/deceleration.
 	var direction = Input.get_axis("move_left", "move_right")
+	var sprinting = Input.get_action_strength("sprint")
+	#TODO change to only start sprinting if on floor
+	var speed = base_speed if (not is_on_floor() or not sprinting) else sprint_speed
+	
 	if direction:
 		velocity.x = direction * speed
 		$AnimatedSprite2D.flip_h = direction >= 0
